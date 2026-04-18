@@ -1,0 +1,33 @@
+run_name: phase3_a2_rotate
+task_id: "3.2"
+phase: 3
+seed: 42
+notes: "Ablation A2 — RandomRotation ±10° only (geometric; label rotated about centre)."
+
+data:
+  train_csv: data/dataset_a/dataset_a_train.csv
+  val_csv:   data/dataset_a/dataset_a_val.csv
+  test_csv:  data/dataset_a/dataset_a_test.csv
+  coord_set: A
+  three_channel: false
+  num_workers: 2
+  augmentation:
+    rotation_deg: 10
+
+model:
+  type: simple_cnn
+  output_dim: 8
+  dropout: 0.0
+  freeze_backbone: false
+  unfreeze_last_n_blocks: 0
+
+train:
+  stage: single
+  epochs: 100
+  batch_size: 64
+  optimizer: adam
+  lr: 1.0e-3
+  weight_decay: 0.0
+  grad_clip: 1.0
+  scheduler: {type: reduce_on_plateau, factor: 0.5, patience: 5, min_lr: 1.0e-6}
+  early_stopping: {patience: 15, monitor: val_rmse_px}

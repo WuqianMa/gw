@@ -1,0 +1,39 @@
+run_name: phase6_task6_1_best_full_stage2
+task_id: "6.1b"
+phase: 6
+seed: 42
+notes: "Stage 6.1 arch_winner on Dataset B, Stage 2 = unfreeze last 2 feature blocks."
+
+data:
+  train_csv: data/dataset_b/dataset_b_train.csv
+  val_csv:   data/dataset_b/dataset_b_val.csv
+  test_csv:  data/dataset_b/dataset_b_test.csv
+  coord_set: B
+  three_channel: true
+  num_workers: 2
+  augmentation:
+    flip_prob: 0.5
+    rotation_deg: 10
+    translate_px: 5
+    scale_low: 0.9
+    scale_high: 1.1
+
+model:
+  type: mobilenet_v2_custom
+  output_dim: 30
+  dropout: 0.4
+  freeze_backbone: true
+  unfreeze_last_n_blocks: 2
+
+train:
+  stage: stage2
+  resume: checkpoints/phase6_task6_1_best_full_stage1_best.pt
+  epochs: 30
+  batch_size: 32
+  optimizer: adam
+  lr: 1.0e-3
+  backbone_lr: 1.0e-4
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  scheduler: {type: reduce_on_plateau, factor: 0.5, patience: 5, min_lr: 1.0e-6}
+  early_stopping: {patience: 15, monitor: val_rmse_px}

@@ -1,0 +1,15 @@
+========================================================================
+DATASET SPLIT SUMMARY
+========================================================================
+Source: training.csv (rows=7049)
+Seed: 42  |  Split: 70% train / 15% val / 15% test
+
+Dataset A (4 core keypoints, target dim = 8)  rows=7000
+  data/dataset_a/dataset_a_train.csv            rows=4900
+  data/dataset_a/dataset_a_val.csv              rows=1050
+  data/dataset_a/dataset_a_test.csv             rows=1050
+
+Dataset B (15 full keypoints, target dim = 30) rows=2140
+  data/dataset_b/dataset_b_train.csv            rows=1498
+  data/dataset_b/dataset_b_val.csv              rows=321
+  data/dataset_b/dataset_b_test.csv             rows=321

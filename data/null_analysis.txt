@@ -1,0 +1,57 @@
+========================================================================
+TRAINING.CSV - NULL VALUE ANALYSIS
+========================================================================
+Rows: 7049
+Columns: 31
+Image column: 9216 pixels per row (~96x96)
+
+------------------------------------------------------------------------
+feature                                   null_count   null_pct
+------------------------------------------------------------------------
+left_eye_center_x                                 10      0.14%
+left_eye_center_y                                 10      0.14%
+right_eye_center_x                                13      0.18%
+right_eye_center_y                                13      0.18%
+left_eye_inner_corner_x                         4778     67.78%
+left_eye_inner_corner_y                         4778     67.78%
+left_eye_outer_corner_x                         4782     67.84%
+left_eye_outer_corner_y                         4782     67.84%
+right_eye_inner_corner_x                        4781     67.83%
+right_eye_inner_corner_y                        4781     67.83%
+right_eye_outer_corner_x                        4781     67.83%
+right_eye_outer_corner_y                        4781     67.83%
+left_eyebrow_inner_end_x                        4779     67.80%
+left_eyebrow_inner_end_y                        4779     67.80%
+left_eyebrow_outer_end_x                        4824     68.44%
+left_eyebrow_outer_end_y                        4824     68.44%
+right_eyebrow_inner_end_x                       4779     67.80%
+right_eyebrow_inner_end_y                       4779     67.80%
+right_eyebrow_outer_end_x                       4813     68.28%
+right_eyebrow_outer_end_y                       4813     68.28%
+nose_tip_x                                         0      0.00%
+nose_tip_y                                         0      0.00%
+mouth_left_corner_x                             4780     67.81%
+mouth_left_corner_y                             4780     67.81%
+mouth_right_corner_x                            4779     67.80%
+mouth_right_corner_y                            4779     67.80%
+mouth_center_top_lip_x                          4774     67.73%
+mouth_center_top_lip_y                          4774     67.73%
+mouth_center_bottom_lip_x                         33      0.47%
+mouth_center_bottom_lip_y                         33      0.47%
+Image                                              0      0.00%
+
+------------------------------------------------------------------------
+SAMPLE AVAILABILITY
+------------------------------------------------------------------------
+Rows with ALL 30 coordinates present (Dataset B candidates): 2140
+Rows with 4 core keypoints present (Dataset A candidates):   7000
+
+Core keypoints used for Dataset A:
+  - left_eye_center_x
+  - left_eye_center_y
+  - right_eye_center_x
+  - right_eye_center_y
+  - nose_tip_x
+  - nose_tip_y
+  - mouth_center_bottom_lip_x
+  - mouth_center_bottom_lip_y

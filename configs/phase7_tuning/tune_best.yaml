@@ -1,0 +1,21 @@
+# Random-search config consumed by src.tune.
+# base_config should point at the overall_winner (per plan.md §12.1). Swap it
+# out if a different stage produced a better val_rmse_px.
+base_config: configs/phase5_arch_tweaks/task5_2_custom_stage2.yaml
+run_name_prefix: phase7_tune
+n_trials: 30
+
+# Budget-shrink: 25 epochs per trial so 30 trials fit in a few hours.
+# Top-3 will be re-run at full budget for the stability study (§12.4).
+# Applied as overrides on the base cfg before each trial runs.
+space:
+  train.optimizer:              {choice: [adam, adamw, sgd]}
+  train.lr:                     {log_uniform: [1.0e-5, 5.0e-3]}
+  train.backbone_lr:            {log_uniform: [1.0e-6, 1.0e-3]}
+  train.weight_decay:           {log_uniform: [1.0e-6, 1.0e-3]}
+  train.batch_size:             {choice: [16, 32, 64]}
+  train.epochs:                 {choice: [25]}
+  model.dropout:                {uniform: [0.1, 0.5]}
+  model.unfreeze_last_n_blocks: {choice: [1, 2, 3, 4]}
+  data.augmentation.flip_prob:  {choice: [0.0, 0.3, 0.5, 0.8]}
+  train.scheduler.patience:     {choice: [3, 5, 8]}

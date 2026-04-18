@@ -1,0 +1,39 @@
+run_name: phase5_task5_1_stem_stage2
+task_id: "5.1b"
+phase: 5
+seed: 42
+notes: "Stage 5.1 stem-modified MobileNetV2, Stage 2 = unfreeze last 2 feature blocks. Loads phase5_task5_1_stem_stage1_best.pt."
+
+data:
+  train_csv: data/dataset_a/dataset_a_train.csv
+  val_csv:   data/dataset_a/dataset_a_val.csv
+  test_csv:  data/dataset_a/dataset_a_test.csv
+  coord_set: A
+  three_channel: true
+  num_workers: 2
+  augmentation:
+    flip_prob: 0.5
+    rotation_deg: 10
+    translate_px: 5
+    scale_low: 0.9
+    scale_high: 1.1
+
+model:
+  type: mobilenet_v2_stem
+  output_dim: 8
+  dropout: 0.2
+  freeze_backbone: true
+  unfreeze_last_n_blocks: 2
+
+train:
+  stage: stage2
+  resume: checkpoints/phase5_task5_1_stem_stage1_best.pt
+  epochs: 30
+  batch_size: 32
+  optimizer: adam
+  lr: 1.0e-3
+  backbone_lr: 1.0e-4
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  scheduler: {type: reduce_on_plateau, factor: 0.5, patience: 5, min_lr: 1.0e-6}
+  early_stopping: {patience: 15, monitor: val_rmse_px}

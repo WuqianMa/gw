@@ -1,0 +1,41 @@
+========================================================================
+KEYPOINT COORDINATE STATS (pixel space, image is 96x96)
+========================================================================
+                            count   mean   std    min    max
+left_eye_center_x          7039.0  66.36  3.45  22.76  94.69
+left_eye_center_y          7039.0  37.65  3.15   1.62  80.50
+right_eye_center_x         7036.0  30.31  3.08   0.69  85.04
+right_eye_center_y         7036.0  37.98  3.03   4.09  81.27
+left_eye_inner_corner_x    2271.0  59.16  2.69  19.06  84.44
+left_eye_inner_corner_y    2271.0  37.94  2.31  27.19  66.56
+left_eye_outer_corner_x    2267.0  73.33  3.41  27.57  95.26
+left_eye_outer_corner_y    2267.0  37.71  2.88  26.25  64.62
+right_eye_inner_corner_x   2268.0  36.65  2.35   5.75  70.71
+right_eye_inner_corner_y   2268.0  37.99  2.31  26.25  69.81
+right_eye_outer_corner_x   2268.0  22.38  3.06   3.98  61.43
+right_eye_outer_corner_y   2268.0  38.03  2.91  25.12  70.75
+left_eyebrow_inner_end_x   2270.0  56.07  3.49  17.89  79.79
+left_eyebrow_inner_end_y   2270.0  29.33  3.08  15.86  60.88
+left_eyebrow_outer_end_x   2225.0  79.48  3.99  32.21  94.27
+left_eyebrow_outer_end_y   2225.0  29.73  3.77  10.52  60.50
+right_eyebrow_inner_end_x  2270.0  39.32  3.21   6.92  76.58
+right_eyebrow_inner_end_y  2270.0  29.50  3.11  16.48  62.08
+right_eyebrow_outer_end_x  2236.0  15.87  3.62   3.83  58.42
+right_eyebrow_outer_end_y  2236.0  30.43  3.87  13.22  66.75
+nose_tip_x                 7049.0  48.37  4.28  12.94  89.44
+nose_tip_y                 7049.0  62.72  5.72  17.93  95.94
+mouth_left_corner_x        2269.0  63.29  4.08  22.92  84.77
+mouth_left_corner_y        2269.0  75.97  4.58  57.02  94.67
+mouth_right_corner_x       2270.0  32.90  3.96   2.25  74.02
+mouth_right_corner_y       2270.0  76.18  4.42  56.69  95.51
+mouth_center_top_lip_x     2275.0  47.98  3.32  12.61  83.99
+mouth_center_top_lip_y     2275.0  72.92  5.22  56.72  94.55
+mouth_center_bottom_lip_x  7016.0  48.57  4.27  12.54  89.44
+mouth_center_bottom_lip_y  7016.0  78.97  5.41  25.85  95.81
+
+Useful sanity checks:
+  * means should cluster in [20, 75] - keypoints are on a face,
+    not at image edges.
+  * max should never exceed 96; min should never be below 0.
+  * std tells you how much a keypoint moves between faces; small std
+    (e.g. mouth_center_*) means the position is easier to predict.

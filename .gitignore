@@ -1,0 +1,14 @@
+__pycache__/
+.venv/
+.DS_Store
+data/training.csv
+data/dataset_a/
+data/dataset_b/
+
+
+
+
+
+
+checkpoints/*.pt
+

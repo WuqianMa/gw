@@ -1,0 +1,37 @@
+run_name: phase6_task6_0_cnn_full
+task_id: "6.0"
+phase: 6
+seed: 42
+notes: "Stage 6.0 simple CNN on Dataset B (30 coords, 2140 rows). Flip-pair table auto-selected via coord_set=B."
+
+data:
+  train_csv: data/dataset_b/dataset_b_train.csv
+  val_csv:   data/dataset_b/dataset_b_val.csv
+  test_csv:  data/dataset_b/dataset_b_test.csv
+  coord_set: B
+  three_channel: false
+  num_workers: 2
+  augmentation:
+    flip_prob: 0.5
+    rotation_deg: 10
+    translate_px: 5
+    scale_low: 0.9
+    scale_high: 1.1
+
+model:
+  type: simple_cnn
+  output_dim: 30
+  dropout: 0.0
+  freeze_backbone: false
+  unfreeze_last_n_blocks: 0
+
+train:
+  stage: single
+  epochs: 100
+  batch_size: 64
+  optimizer: adam
+  lr: 1.0e-3
+  weight_decay: 0.0
+  grad_clip: 1.0
+  scheduler: {type: reduce_on_plateau, factor: 0.5, patience: 5, min_lr: 1.0e-6}
+  early_stopping: {patience: 15, monitor: val_rmse_px}
